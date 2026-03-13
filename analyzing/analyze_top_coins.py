@@ -52,7 +52,7 @@ for i, coin in enumerate(COINS):
     for key, value in signals.items():
         if value:
             print("!!!", coin, key, "!!!")
-            # send_message(f"!!! {coin} {key} !!!\n{signals=}\n{i=}")
+            send_message(f"! {coin} {key} {i=} !")
             break
     
     time.sleep(4)
