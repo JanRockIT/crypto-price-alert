@@ -1,5 +1,5 @@
 import requests
-from config import TELEGRAM_CHAT_ID, URL
+from config import TELEGRAM_CHAT_ID, TELEGRAM_API_URL
 
 def send_message(text: str):
     data = {
@@ -7,7 +7,7 @@ def send_message(text: str):
         "text": text
     }
 
-    response = requests.post(URL, data=data)
+    response = requests.post(TELEGRAM_API_URL, data=data)
     data = response.json()
 
     return data

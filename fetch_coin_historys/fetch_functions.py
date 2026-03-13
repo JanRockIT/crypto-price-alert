@@ -1,7 +1,7 @@
 import requests
 from datetime import datetime
 import time
-from fetch_coin_historys.config import get_headers
+from config import get_history_url, COINGECKO_HISTORY_HEADERS, get_top_coins_url
 
 def date_to_unix(date_string: str):
     dt = datetime.strptime(date_string, "%Y-%m-%d")
@@ -14,15 +14,29 @@ def get_history_range(start_date: int=date_to_unix("2025-6-15"), coin: str="ethe
         "to": end_date
     }
     
-    response = requests.get(f"https://api.coingecko.com/api/v3/coins/{coin}/market_chart/range", headers=get_headers(), params=params)
+    response = requests.get(
+        get_history_url(coin),
+        headers=COINGECKO_HISTORY_HEADERS,
+        params=params
+    )
+
+    if not response.ok:
+        return {"error", True, "data", None}
+    
     data = response.json()
 
-    return data
+    return {"error": False, "data": data}
 
-def get_top_coins(n: int=10):
-    response = requests.get(f"https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page={n}&page=1")
+def get_top_coins(n: int=5):
+    response = requests.get(get_top_coins_url(n))
+
+    if not response.ok:
+        return { "error", True, "data", None }
+    
     data = response.json()
-    return [coin["id"] for coin in data]
+
+    return { "error": False, "data": data }
+    # [coin["id"] for coin in data]
 
 if __name__ == "__main__":
     print(
