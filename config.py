@@ -16,8 +16,8 @@ COINGECKO_HISTORY_HEADERS = {
 def get_history_url(coin: str):
     return f"https://api.coingecko.com/api/v3/coins/{coin}/market_chart/range"
 
-def get_top_coins_url(n: int):
-    return f"https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page={n}&page=1"
+def get_top_coins_url(n: int, currency:str="usd"):
+    return f"https://api.coingecko.com/api/v3/coins/markets?vs_currency={currency}&order=market_cap_desc&per_page={n}&page=1"
 
 def get_coin_url(coin: str, currency:str="usd"):
     return (f"https://api.coingecko.com/api/v3/simple/price?vs_currencies={currency}&ids={coin}&x_cg_demo_api_key={COINGECKO_API_KEY}")

@@ -27,8 +27,8 @@ def get_history_data(start_date: int=date_to_unix("2025-6-15"), coin: str="ether
 
     return {"error": False, "data": data}
 
-def get_top_coins(n: int=5):
-    response = requests.get(get_top_coins_url(n))
+def get_top_coins(n: int=5, currency: str="usd"):
+    response = requests.get(get_top_coins_url(n, currency))
 
     if not response.ok:
         return { "error": True, "data": None }

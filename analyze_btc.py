@@ -1,8 +1,9 @@
 from coingecko_fetch.fetch_functions import get_history_data, get_coin_data
 import time
+from analyze_functions import *
 # doing the process just for bitcoin
 
-COIN = "bitcoin"
+COIN = "ethena-usde"
 CURRENCY = "usd"
 # get the coin history
 
@@ -36,3 +37,13 @@ print(f"""
     {history_average_month=},
     {history_average_week=}
 """)
+
+print(
+    analyze_market_signals(
+        history_average_year,
+        history_average_6_months,
+        history_average_month,
+        history_average_week,
+        coin_price_now
+    )
+)
