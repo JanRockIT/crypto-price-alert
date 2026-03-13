@@ -19,5 +19,5 @@ def get_history_url(coin: str):
 def get_top_coins_url(n: int):
     return f"https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page={n}&page=1"
 
-def get_coin_url(coin: str):
-    return (f"https://api.coingecko.com/api/v3/simple/price?vs_currencies=usd&ids={coin}&x_cg_demo_api_key={COINGECKO_API_KEY}")
+def get_coin_url(coin: str, currency:str="usd"):
+    return (f"https://api.coingecko.com/api/v3/simple/price?vs_currencies={currency}&ids={coin}&x_cg_demo_api_key={COINGECKO_API_KEY}")

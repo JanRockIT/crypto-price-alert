@@ -5,7 +5,7 @@ CURRENCY = "usd"
 N_TOP_COINS = 5
 
 end_date = time.time()
-start_date = end_date - 364 * 24 * 60 * 60
+start_date = end_date - 360 * 24 * 60 * 60
 
 top_coins = get_top_coins(N_TOP_COINS)
 

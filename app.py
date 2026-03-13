@@ -1,1 +1,0 @@
-# doing the process just for bitcoin
