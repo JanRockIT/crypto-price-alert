@@ -1,7 +1,7 @@
 import requests
 from datetime import datetime
 import time
-from config import get_headers
+from fetch_coin_historys.config import get_headers
 
 def date_to_unix(date_string: str):
     dt = datetime.strptime(date_string, "%Y-%m-%d")
